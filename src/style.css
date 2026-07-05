@@ -1,0 +1,25 @@
+body {
+    font-family: sans-serif;
+    max-width: 500px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+label {
+    display: block;
+    margin-top: 16px;
+}
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 4px;
+}
+button {
+    margin-top: 24px;
+    width: 100%;
+}
+pre {
+    margin-top: 24px;
+    padding: 12px;
+    background: #f5f5f5;
+    overflow: auto;
+}
