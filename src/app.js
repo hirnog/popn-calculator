@@ -8,17 +8,17 @@ function registerEvents() {
     document.getElementById("calculate-slim")
         .addEventListener("click", onCalculate);
     document.getElementById("bpmTgt")
-    .addEventListener("keydown", e => {
-        if (e.key === "Enter") {
-            document.getElementById("bpmMax").focus();
-        }
-    });
+        .addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                document.getElementById("bpmMax").focus();
+            }
+        });
     document.getElementById("bpmMax")
-    .addEventListener("keydown", e => {
-        if (e.key === "Enter") {
-            document.getElementById("bpmMin").focus();
-        }
-    });
+        .addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                document.getElementById("bpmMin").focus();
+            }
+        });
 }
 function onCalculate() {
     const config = {
