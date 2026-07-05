@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="ja">
+<!DOCTYPE html>
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,27 +8,34 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="app.js"></script>
 </head>
+
 <body>
     <h1>ポ計算機</h1>
-    <label>
-        緑数字
-        <input id="green" type="number" value="300">
-    </label>
-    <label>
-        BPM
-        <input id="bpm" type="number">
-    </label>
-    <label>
-        モード
-        <select id="mode">
-            <option value="NORMAL">NORMAL</option>
-            <option value="SLIM">SLIM</option>
-        </select>
-    </label>
-    <button id="calculate">
-        計算
-    </button>
+    <fieldset>
+        <label>
+            <span>緑数字</span>
+            <input id="bpmTgt" type="number">
+        </label>
+        <label>
+            <span>高速BPM</span>
+            <input id="bpmMax" type="number">
+        </label>
+        <label>
+            <span>低速BPM</span>
+            <input id="bpmMin" type="number">
+        </label>
+    </fieldset>
+    <hr>
+    <div class="button-row">
+        <button id="calculate-normal">
+            計算(NORMAL)
+        </button>
+        <button id="calculate-slim">
+            計算(SLIM)
+        </button>
+    </div>
     <hr>
     <pre id="result"></pre>
 </body>
+
 </html>

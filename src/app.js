@@ -6,6 +6,12 @@ function registerEvents() {
     document
         .getElementById("calculate")
         .addEventListener("click", onCalculate);
+    document
+        .getElementById("bpm").addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                green.focus();
+            }
+        });
 }
 function onCalculate() {
     const config = {

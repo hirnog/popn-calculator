@@ -5,21 +5,48 @@ body {
     padding: 0 16px;
 }
 label {
-    display: block;
-    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
-input, select {
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 4px;
+label > span {
+    width: 6em; /* ラベル幅を揃える */
 }
-button {
-    margin-top: 24px;
-    width: 100%;
+label > input {
+    flex: 1;
+}
+.button-row {
+    display: flex;
+    gap: 8px;
+}
+.button-row button {
+    flex: 1;
 }
 pre {
     margin-top: 24px;
     padding: 12px;
     background: #f5f5f5;
     overflow: auto;
+}
+.segment {
+    display: inline-flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.segment input {
+    display: none;
+}
+.segment label {
+    padding: 8px 16px;
+    cursor: pointer;
+    user-select: none;
+    background: white;
+}
+.segment label + input + label {
+    border-left: 1px solid #ccc;
+}
+.segment input:checked + label {
+    background: #007aff;
+    color: white;
 }
