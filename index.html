@@ -1,41 +1,87 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポ計算機</title>
+    <title>ハイスピード計算機</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="app.js"></script>
 </head>
-
 <body>
-    <h1>ポ計算機</h1>
-    <fieldset>
-        <label>
-            <span>緑数字</span>
-            <input id="bpmTgt" type="number">
-        </label>
-        <label>
-            <span>高速BPM</span>
-            <input id="bpmMax" type="number">
-        </label>
-        <label>
-            <span>低速BPM</span>
-            <input id="bpmMin" type="number">
-        </label>
-    </fieldset>
-    <hr>
-    <div class="button-row">
-        <button id="calculate-normal">
-            計算(NORMAL)
-        </button>
-        <button id="calculate-slim">
-            計算(SLIM)
-        </button>
-    </div>
-    <hr>
-    <pre id="result"></pre>
-</body>
+    <main class="page">
+        <section class="panel hero">
+            <p class="eyebrow">Pop'n Music Support</p>
+            <h1>ハイスピード計算機</h1>
+            <p class="lead">
+                緑数字、基準BPM、低速BPM、ROOF からハイスピードと SUDDEN を一覧表示します。
+            </p>
+        </section>
 
+        <section class="panel">
+            <form id="calculator-form" novalidate>
+                <fieldset class="mode-field">
+                    <legend>モード</legend>
+                    <div class="segment-control">
+                        <input id="mode-normal" type="radio" name="mode" value="NORMAL" checked>
+                        <label for="mode-normal">NORMAL</label>
+                        <input id="mode-slim" type="radio" name="mode" value="SLIM">
+                        <label for="mode-slim">SLIM</label>
+                    </div>
+                </fieldset>
+
+                <div class="input-grid">
+                    <label class="input-block" for="green-number">
+                        <span>緑数字</span>
+                        <input id="green-number" name="greenNumber" type="number" inputmode="decimal" step="0.1" min="0">
+                    </label>
+                    <label class="input-block" for="base-bpm">
+                        <span>基準BPM</span>
+                        <input id="base-bpm" name="baseBpm" type="number" inputmode="decimal" step="0.1" min="0">
+                    </label>
+                    <label class="input-block" for="low-bpm">
+                        <span>低速BPM</span>
+                        <input id="low-bpm" name="lowBpm" type="number" inputmode="decimal" step="0.1" min="0">
+                    </label>
+                    <label class="input-block" for="roof">
+                        <span>ROOF</span>
+                        <input id="roof" name="roof" type="number" inputmode="decimal" step="1">
+                    </label>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="primary-button">計算する</button>
+                    <button type="button" id="reset-button" class="secondary-button">初期化</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <div class="summary" id="summary" hidden>
+                <div id="base-hispeed-card">
+                    <span class="summary-label">基準ハイスピード</span>
+                    <strong id="base-hispeed-value">-</strong>
+                </div>
+                <div>
+                    <span class="summary-label">SUDDENの平均差分</span>
+                    <strong id="average-sudden-diff-value">-</strong>
+                </div>
+            </div>
+
+            <p id="error-message" class="message error" hidden></p>
+
+            <div class="table-wrap" id="result-wrap" hidden>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>HS</th>
+                            <th>BPM</th>
+                            <th>SUDDEN</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
 </html>
