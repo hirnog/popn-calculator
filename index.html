@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,27 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="app.js"></script>
 </head>
+
 <body>
     <main class="page">
         <section class="panel hero">
-            <p class="eyebrow">Pop'n Music Support</p>
-            <h1>ハイスピード計算機</h1>
-            <p class="lead">
-                緑数字、基準BPM、低速BPM、ROOF からハイスピードと SUDDEN を一覧表示します。
-            </p>
+            <div class="hero-head">
+                <div>
+                    <p class="eyebrow">PM Support</p>
+                    <h1>SUDDEN計算機</h1>
+                </div>
+                <button type="button" id="help-button" class="help-button" aria-label="説明を表示">
+                    <span aria-hidden="true">i</span>
+                </button>
+            </div>
         </section>
 
         <section class="panel">
             <form id="calculator-form" novalidate>
+                <div class="actions">
+                    <button type="button" id="reset-button" class="secondary-button">初期化</button>
+                </div>
+
                 <fieldset class="mode-field">
                     <legend>モード</legend>
                     <div class="segment-control">
@@ -32,7 +42,8 @@
                 <div class="input-grid">
                     <label class="input-block" for="green-number">
                         <span>緑数字</span>
-                        <input id="green-number" name="greenNumber" type="number" inputmode="decimal" step="0.1" min="0">
+                        <input id="green-number" name="greenNumber" type="number" inputmode="decimal" step="0.1"
+                            min="0">
                     </label>
                     <label class="input-block" for="base-bpm">
                         <span>基準BPM</span>
@@ -50,12 +61,11 @@
 
                 <div class="actions">
                     <button type="submit" class="primary-button">計算する</button>
-                    <button type="button" id="reset-button" class="secondary-button">初期化</button>
                 </div>
             </form>
         </section>
 
-        <section class="panel">
+        <section class="panel result-panel">
             <div class="summary" id="summary" hidden>
                 <div id="base-hispeed-card">
                     <span class="summary-label">基準ハイスピード</span>
@@ -83,5 +93,34 @@
             </div>
         </section>
     </main>
+
+    <div id="help-dialog" class="help-dialog" hidden>
+        <div class="help-dialog-inner" role="dialog" aria-modal="true" aria-labelledby="help-dialog-title">
+            <div class="help-dialog-head">
+                <h2 id="help-dialog-title">説明</h2>
+                <button type="button" id="help-close-button" class="help-close-button" aria-label="閉じる">×</button>
+            </div>
+            <p>
+                入力値から緑数字を目標にした設定ハイスピードに対するSUDDEN値を一覧表示します。
+            </p>
+            <p>
+                <strong>モード</strong><br />
+                NORMALかSLIMを選択してください。NORMALを選択するとROOFが60に設定されます。
+            </p>
+            <p>
+                <strong>基準BPM</strong><br />
+                SUDDENを外した状態で合わせる曲のBPMです。つまり高い方です。
+            </p>
+            <p>
+                <strong>低速BPM</strong><br />
+                SUDDENを付けた状態で合わせる曲のBPMです。つまり低い方です。
+            </p>
+            <p>
+                <strogn>ROOF</strogn><br />
+                ROOFオプションです。NORMALは60、SLIMは0が自動的に適用されます。
+            </p>
+        </div>
+    </div>
 </body>
+
 </html>

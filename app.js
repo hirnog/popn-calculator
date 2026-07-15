@@ -24,7 +24,10 @@ function getElements() {
         averageSuddenDiffValue: getRequiredElement("average-sudden-diff-value"),
         errorMessage: getRequiredElement("error-message"),
         resultWrap: getRequiredElement("result-wrap"),
-        resultBody: getRequiredElement("result-body")
+        resultBody: getRequiredElement("result-body"),
+        helpButton: getRequiredElement("help-button"),
+        helpDialog: getRequiredElement("help-dialog"),
+        helpCloseButton: getRequiredElement("help-close-button")
     };
 }
 
@@ -123,6 +126,14 @@ function focusFirstInput(elements) {
     elements.greenNumber.focus();
 }
 
+function openHelpDialog(elements) {
+    elements.helpDialog.hidden = false;
+}
+
+function closeHelpDialog(elements) {
+    elements.helpDialog.hidden = true;
+}
+
 function resetForm(elements) {
     elements.form.reset();
     elements.modeInputs[0].checked = true;
@@ -162,6 +173,20 @@ function registerEvents(elements) {
             return;
         }
         highlightTargetRow(elements, latestTargetHispeed);
+    });
+
+    elements.helpButton.addEventListener("click", () => {
+        openHelpDialog(elements);
+    });
+
+    elements.helpCloseButton.addEventListener("click", () => {
+        closeHelpDialog(elements);
+    });
+
+    elements.helpDialog.addEventListener("click", (event) => {
+        if (event.target === elements.helpDialog) {
+            closeHelpDialog(elements);
+        }
     });
 }
 
